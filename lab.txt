@@ -1,0 +1,480 @@
+1. Кластар: Автомобиль және Мотоцикл
+
+class Vehicle {
+    int year;
+
+    public Vehicle(int year) {
+        this.year = year;
+    }
+
+    public int yearDifference(int inputYear) {
+        return Math.abs(inputYear - this.year);
+    }
+}
+
+class Автомобиль extends Vehicle {
+    public Автомобиль(int year) {
+        super(year);
+    }
+
+    public void info() {
+        System.out.println("Это автомобиль");
+    }
+}
+
+class Мотоцикл extends Vehicle {
+    public Мотоцикл(int year) {
+        super(year);
+    }
+
+    public void info() {
+        System.out.println("Это мотоцикл");
+    }
+}
+
+public class Task {
+    public static void main(String[] args) {
+        Автомобиль car = new Автомобиль(2015);
+        car.info();
+        System.out.println("Разница в годах: " + car.yearDifference(2024));
+
+        Мотоцикл bike = new Мотоцикл(2020);
+        bike.info();
+        System.out.println("Разница в годах: " + bike.yearDifference(2024));
+    }
+}
+
+2. Класс: Самолет (Airplane)
+
+class Airplane {
+    private String producer;
+    private int year;
+    private double length;
+    private double weight;
+    private int fuel;
+
+    public Airplane(String producer, int year, double length, double weight) {
+        this.producer = producer;
+        this.year = year;
+        this.length = length;
+        this.weight = weight;
+        this.fuel = 0;  // Бастапқы отын мөлшері
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public void fillUp(int fuelAmount) {
+        this.fuel += fuelAmount;
+    }
+
+    public void info() {
+        System.out.println("Изготовитель: " + producer +
+                ", год выпуска: " + year +
+                ", длина: " + length +
+                ", вес: " + weight +
+                ", количество топлива в баке: " + fuel);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Airplane airplane = new Airplane("Boeing", 2020, 30.5, 40000);
+        airplane.setYear(2022);
+        airplane.setLength(32.0);
+        airplane.fillUp(500);
+        airplane.fillUp(300);
+        airplane.info();
+    }
+}
+
+3. Кластар: Преподаватель (Teacher) және Студент (Student)
+
+import java.util.Random;
+
+class Student {
+    private String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+class Teacher {
+    private String name;
+    private String subject;
+
+    public Teacher(String name, String subject) {
+        this.name = name;
+        this.subject = subject;
+    }
+
+    public void evaluate(Student student) {
+        Random rand = new Random();
+        int grade = rand.nextInt(4) + 2;  // 2-ден 5-ке дейін кездейсоқ баға
+
+        String gradeStr;
+        switch (grade) {
+            case 5:
+                gradeStr = "отлично";
+                break;
+            case 4:
+                gradeStr = "хорошо";
+                break;
+            case 3:
+                gradeStr = "удовлетворительно";
+                break;
+            default:
+                gradeStr = "неудовлетворительно";
+        }
+
+        System.out.println("Преподаватель " + name +
+                " оценил студента с именем " + student.getName() +
+                " по предмету " + subject +
+                " на оценку " + gradeStr + ".");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Teacher teacher = new Teacher("Иван Иванов", "Математика");
+        Student student = new Student("Петр Петров");
+
+        teacher.evaluate(student);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cco
+
+
+
+1-тапсырма: Rectangle класын құру
+
+Rectangle.java:
+
+public class Rectangle {
+    private float length;
+    private float width;
+
+    public Rectangle() {
+        this.length = 1.0f;
+        this.width = 1.0f;
+    }
+
+    public Rectangle(float length, float width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public float getLength() {
+        return length;
+    }
+
+    public void setLength(float length) {
+        this.length = length;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    public float getArea() {
+        return length * width;
+    }
+
+    public float getPerimeter() {
+        return 2 * (length + width);
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle[length=" + length + ",width=" + width + "]";
+    }
+}
+
+Test.java:
+
+public class Test {
+    public static void main(String[] args) {
+        Rectangle r1 = new Rectangle(1.2f, 3.4f);
+        System.out.println(r1);
+        Rectangle r2 = new Rectangle();
+        System.out.println(r2);
+        r1.setLength(5.6f);
+        r1.setWidth(7.8f);
+        System.out.println(r1);
+        System.out.println("length is: " + r1.getLength());
+        System.out.println("width is: " + r1.getWidth());
+
+        System.out.printf("area is: %.2f%n", r1.getArea());
+        System.out.printf("perimeter is: %.2f%n", r1.getPerimeter());
+    }
+}
+
+2-тапсырма: Employee (Қызметкер) класын құру
+
+Employee.java:
+
+public class Employee {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private int salary;
+
+    public Employee(int id, String firstName, String lastName, int salary) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getAnnualSalary() {
+        return salary * 12;
+    }
+
+    public int raiseSalary(int percent) {
+        salary += salary * percent / 100;
+        return salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee[id=" + id + ",name=" + getName() + ",salary=" + salary + "]";
+    }
+}
+
+Test.java:
+
+public class Test {
+    public static void main(String[] args) {
+        Employee e1 = new Employee(2, "Шыңғыс", "Уалиханұлы", 2500);
+        System.out.println(e1);
+        e1.setSalary(999);
+        System.out.println(e1);
+        System.out.println("id: " + e1.getID());
+        System.out.println("Есімі: " + e1.getFirstName());
+        System.out.println("Тегі: " + e1.getLastName());
+        System.out.println("Жалақысы: " + e1.getSalary());
+        System.out.println("Толық аты-жөні: " + e1.getName());
+        System.out.println("Жылдық ақысы: " + e1.getAnnualSalary());
+        System.out.println(e1.raiseSalary(10));
+        System.out.println(e1);
+    }
+}
+
+3-тапсырма: Account (Банк шоты) класын құру
+
+Account.java:
+
+public class Account {
+    private String id;
+    private String name;
+    private int balance;
+
+    public Account(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.balance = 0;
+    }
+
+    public Account(String id, String name, int balance) {
+        this.id = id;
+        this.name = name;
+        this.balance = balance;
+    }
+
+    public String getID() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void credit(int amount) {
+        balance += amount;
+    }
+
+    public void debit(int amount) {
+if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Amount exceeded balance");
+        }
+    }
+
+    public void transferTo(Account another, int amount) {
+        if (amount <= balance) {
+            this.balance -= amount;
+            another.balance += amount;
+        } else {
+            System.out.println("Amount exceeded balance");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Account[id=" + id + ",name=" + name + ",balance=" + balance + "]";
+    }
+}
+
+Test.java:
+
+public class Test {
+    public static void main(String[] args) {
+        Account a1 = new Account("A101", "Берке Батуұлы", 88);
+        Account a2 = new Account("A102", "Самат Тоқтарұлы");
+
+        System.out.println(a1);
+        System.out.println(a2);
+
+        a1.credit(100);
+        System.out.println(a1);
+        a1.debit(50);
+        System.out.println(a1);
+        a1.debit(500);
+        System.out.println(a1);
+
+        a1.transferTo(a2, 100);
+        System.out.println(a1);
+        System.out.println(a2);
+    }
+}
+
+4-тапсырма: Time (Уақыт) класын құру
+
+Time.java:
+
+public class Time {
+    private int hour;
+    private int minute;
+    private int second;
+
+    public Time(int hour, int minute, int second) {
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
+    public void setTime(int hour, int minute, int second) {
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d:%02d", hour, minute, second);
+    }
+}
+
+5-тапсырма: Ball (Доп) класын құру
+
+Ball.java:
+
+public class Ball {
+    private float x, y;
+    private int radius;
+    private float xDelta, yDelta;
+
+    public Ball(float x, float y, int radius, float xDelta, float yDelta) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.xDelta = xDelta;
+        this.yDelta = yDelta;
+    }
+
+    public void move() {
+        x += xDelta;
+        y += yDelta;
+    }
+
+    @Override
+    public String toString() {
+        return "Ball[(" + x + "," + y + "), speed=(" + xDelta + "," + yDelta + ")]";
+    }
+}
